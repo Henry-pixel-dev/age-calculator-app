@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="src/output.css">
   
   <title>Frontend Mentor | Age calculator app</title>
 
@@ -14,9 +15,64 @@
     .attribution a { color: hsl(228, 45%, 44%); }
   </style>
 </head>
-<body>
+<body class="min-h-screen bg-grey200 flex flex-col justify-center items-center family">
 
-  Day
+  <main class="container mx-auto max-w-2xl flex flex-col space-y-12 justify-center items-center bg-white p-8 rounded-lg rounded-br-[120px]  my-16 ">
+    <form action="" method="" class="flex flex-row space-x-6">
+      <div class="flex flex-col space-y-2">
+        <label for="day" class=" font-bold text-grey500 tracking-widest">
+          DAY
+        </label>
+        <input type="number" id="day" class="flex-1 border border-grey200 rounded-sm p-4 w-25 font-bold text-black text-2xl focus:outline focus:outline-purple" placeholder="24">
+      </div>
+      <div class="flex flex-col space-y-2">
+        <label for="month" class=" font-bold text-grey500 tracking-widest">
+          MONTH
+        </label>
+        <input type="number" id="month" class="flex-1 border border-grey200 rounded-sm p-4 w-25 font-bold text-black text-2xl focus:outline focus:outline-purple" placeholder="09">
+      </div>
+      <div class="flex flex-col space-y-2">
+        <label for="year" class=" font-bold text-grey500 tracking-widest">
+          YEAR
+        </label>
+        <input type="number" id="year" class="flex-1 border border-grey200 rounded-sm p-4 w-25 font-bold text-black text-2xl focus:outline focus:outline-purple" placeholder="1984">
+      </div>
+    </form>
+    <div class="relative w-full border border-gray-200 ">
+      <button id="btn" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-4 bg-purple-500 rounded-full md:right-0  md:translate-x-0 md:left-auto">
+        <img src="assets/images/icon-arrow.svg" alt="">
+      </button>
+    </div>
+    
+
+    <div class="w-full flex flex-col space-y-6 italic">
+      <div class="flex flex-row justify-start space-x-3">
+        <p id="yearDsplay" class="text- text-purple text-7xl font-bold">
+          --
+        </p>
+        <p class="text-7xl text-black font-bold">
+          years
+        </p>
+      </div>
+      <div class="flex flex-row space-x-3">
+        <p id="monthDisplay" class="text- text-purple text-7xl font-bold">
+          --
+        </p>
+        <p class="text-7xl text-black font-bold">
+          months
+        </p>
+      </div>
+      <div class="flex flex-row space-x-3">
+        <p id="daysDisplay" class="text- text-purple text-7xl font-bold">
+          --
+        </p>
+        <p class="text-7xl text-black font-bold">
+          days
+        </p>
+      </div>
+    </div>
+  </main>
+  <!-- Day
   DD
 
   Month
@@ -28,11 +84,13 @@
   -- years
   -- months
   -- days
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+   -->
+  <!-- <footer>
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="#">Henry</a>.
+    </div>
+  </footer> -->
 
   <script src="script.js"></script>
 </body>
