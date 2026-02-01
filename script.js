@@ -6,6 +6,24 @@ const monthDisplay = document.querySelector('#monthDisplay');
 const daysDisplay = document.querySelector('#daysDisplay');
 const btn = document.querySelector('#btn')
 
+let DateObject = {
+    day: null,
+    month: null,
+    year: null
+}
+
+dayInput.addEventListener('input', (e) => {
+    DateObject.day = e.target.value;
+    console.log(DateObject.day)
+});
+monthInput.addEventListener('input', (e) => {
+    DateObject.month = e.target.value;
+    console.log(DateObject.month)
+});
+yearInput.addEventListener('input', (e) => {
+    DateObject.year = e.target.value;
+    console.log(DateObject.year)
+});
 
 function validateDay(dayInput){
     if(!dayInput) return false;
@@ -66,18 +84,24 @@ function calculateAge(birthYear, birthMonths, birthDays){
     let months = currentMonth - birthMonths;
     let days = currentDay - birthDays
     
+    // return {
+    //     years,
+    //     months,
+    //     days
+    // }
     return {
-        years,
-        months,
-        days
+        currYear: years,
+        currMonth: months,
+        currDays: days
     }
 }
 
 function updateDisplay() {
+    console.log(DateObject)
     const { currYear, currMonth, currDays } = calculateAge(
-        yearInput.value, 
-        monthInput.value, 
-        dayInput.value
+        DateObject.year, 
+        DateObject.month,
+        DateObject.day
     );
     console.log(currDays)
     console.log(currMonth)
@@ -92,7 +116,11 @@ function showError() {
 
 }
 btn.addEventListener('click', () => {
+    
     if(validateTotalDate()){
+        yearDisplay.textContent = '';
+        monthDisplay.textContent = '';
+        daysDisplay.textContent = ''
         updateDisplay()
     } else {
         showError()
