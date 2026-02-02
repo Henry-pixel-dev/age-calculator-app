@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <link rel="stylesheet" href="src/output.css">
   
   <title>Frontend Mentor | Age calculator app</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  
   <style>
     .attribution { font-size: 11px; text-align: center; }
     .attribution a { color: hsl(228, 45%, 44%); }
@@ -19,23 +19,32 @@
 
   <main class="container mx-auto max-w-2xl flex flex-col space-y-12 justify-center items-center bg-white p-8 rounded-lg rounded-br-[120px]  my-16 ">
     <form action="" method="" class="flex flex-row space-x-6">
-      <div class="flex flex-col space-y-2">
+      <div class="flex-1 flex flex-col space-y-2">
         <label for="day" class=" font-bold text-grey500 tracking-widest">
           DAY
         </label>
-        <input type="number" id="day" class="flex-1 border border-grey200 rounded-sm p-4 w-25 font-bold text-black text-2xl focus:outline focus:outline-purple" placeholder="24">
+        <input type="number" id="day" class="flex-1 border border-grey200 rounded-sm p-4 w-25 font-bold text-black text-2xl focus:outline focus:outline-purple md:w-30" placeholder="24">
+        <p class="hidden text-red400 italic">
+          This field is required
+        </p>
       </div>
-      <div class="flex flex-col space-y-2">
+      <div class="flex-1 flex flex-col space-y-2">
         <label for="month" class=" font-bold text-grey500 tracking-widest">
           MONTH
         </label>
-        <input type="number" id="month" class="flex-1 border border-grey200 rounded-sm p-4 w-25 font-bold text-black text-2xl focus:outline focus:outline-purple" placeholder="09">
+        <input type="number" id="month" class="flex-1 border border-grey200 rounded-sm p-4 w-25 font-bold text-black text-2xl focus:outline focus:outline-purple md:w-30" placeholder="09">
+        <p class="hidden text-red400 italic">
+          This field is required
+        </p>
       </div>
-      <div class="flex flex-col space-y-2">
+      <div class="flex-1 flex flex-col space-y-2">
         <label for="year" class=" font-bold text-grey500 tracking-widest">
           YEAR
         </label>
-        <input type="number" id="year" class="flex-1 border border-grey200 rounded-sm p-4 w-25 font-bold text-black text-2xl focus:outline focus:outline-purple" placeholder="1984">
+        <input type="number" id="year" class="flex-1 border border-grey200 rounded-sm p-4 w-25 font-bold text-black text-2xl focus:outline focus:outline-purple md:w-30" placeholder="1984">
+        <p class="hidden text-red400 italic">
+          This field is required
+        </p>
       </div>
     </form>
     <div class="relative w-full border border-gray-200 ">
@@ -72,26 +81,14 @@
       </div>
     </div>
   </main>
-  <!-- Day
-  DD
 
-  Month
-  MM
-
-  Year
-  YYYY
-
-  -- years
-  -- months
-  -- days
-   -->
   <footer>
     <div class="attribution">
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
       Coded by <a href="#">Henry</a>.
     </div>
   </footer>
-
+  
   <script src="script.js"></script>
 </body>
 </html>

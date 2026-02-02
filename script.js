@@ -25,12 +25,34 @@ yearInput.addEventListener('input', (e) => {
     console.log(DateObject.year)
 });
 
-function validateDay(dayInput){
-    if(!dayInput) return false;
+dayInput.addEventListener('blur', () => {
+    if (!validateDay(dayInput.value)){
+        showError(dayInput)
+    } else {
+        clearError(dayInput)
+    }
+})
+monthInput.addEventListener('blur', () => {
+    if (!validateMonth(monthInput.value)){
+        showError(monthInput)
+    } else {
+        clearError(monthInput)
+    }
+})
+yearInput.addEventListener('blur', () => {
+    if (!validateYear(yearInput.value)){
+        showError(yearInput)
+    } else {
+        clearError(yearInput)
+    }
+})
+
+function validateDay(day){
+    if(!day) return false;
 
     const startDay = 1
     const maxDay = 31
-    if(dayInput < startDay || dayInput > maxDay){
+    if(day < startDay || day > maxDay){
         return false;
     }
 
@@ -42,7 +64,7 @@ function validateMonth(monthInput){
 
     const startMonth = 1
     const maxMonth = 12;
-    if(monthInput.value < startMonth || monthInput.value > maxMonth){
+    if(monthInput < startMonth || monthInput> maxMonth){
         return false;
     }
 
@@ -55,7 +77,7 @@ function validateYear(yearInput){
     let myDate = new Date('2026');
     let currentyear = myDate.getFullYear()
 
-    if(yearInput.value > currentyear){
+    if(yearInput > currentyear){
         return false;
     }
 
@@ -64,9 +86,8 @@ function validateYear(yearInput){
 
 function validateTotalDate(){
     if(!validateDay(dayInput.value)) return false;
-    if (!validateMonth(monthInput.value)) return false;
+    if (!validateMonth(monthInput.value)) return false; 
     if(!validateYear(yearInput.value)) return false;
-
     return true;
 }
 
@@ -83,12 +104,19 @@ function calculateAge(birthYear, birthMonths, birthDays){
     let years = currentyear - birthYear;
     let months = currentMonth - birthMonths;
     let days = currentDay - birthDays
+
     
-    // return {
-    //     years,
-    //     months,
-    //     days
-    // }
+    if(days < 0){
+        months--;
+        const lastMonth = new Date(currentyear, currentMonth -1, 0);
+        days += lastMonth.getDate();
+    }
+
+    if(months < 0){
+        years--;
+        months += 12;
+    }
+    
     return {
         currYear: years,
         currMonth: months,
@@ -110,21 +138,37 @@ function updateDisplay() {
     yearDisplay.textContent = currYear;
     monthDisplay.textContent = currMonth;
     daysDisplay.textContent = currDays;
+    yearDisplay.classList.add('slide');
+    yearDisplay.classList.add('slide');
+    monthDisplay.classList.add('slide2');
+    daysDisplay.classList.add('slide3');
 }
 
-function showError() {
-
+function showError(sibbling) {
+    const label = sibbling.previousElementSibling
+    label.style.color = 'hsl(0, 100%, 67%)';
+    const errorMsg = sibbling.nextElementSibling
+    errorMsg.classList.remove('hidden')
+    sibbling.classList.add('error')
 }
+
+function clearError(sibbling) {
+   const label = sibbling.previousElementSibling
+    label.style.color = 'hsl(0, 1%, 44%)';
+    const errorMsg = sibbling.nextElementSibling
+    errorMsg.style.display = 'none'
+    sibbling.classList.remove('error') 
+}
+
 btn.addEventListener('click', () => {
     
     if(validateTotalDate()){
-        yearDisplay.textContent = '';
-        monthDisplay.textContent = '';
-        daysDisplay.textContent = ''
+        yearInput.value = '';
+        monthInput.value = '';
+        dayInput.value = ''
         updateDisplay()
     } else {
-        showError()
+        alert('fill in the correct details')
         return;
     }
 })
-
