@@ -77,7 +77,7 @@ function validateYear(yearInput){
     let myDate = new Date('2026');
     let currentyear = myDate.getFullYear()
 
-    if(yearInput > currentyear){
+    if(yearInput > currentyear || yearInput < 1900){
         return false;
     }
 
