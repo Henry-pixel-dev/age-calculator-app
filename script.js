@@ -131,17 +131,21 @@ function updateDisplay() {
         DateObject.month,
         DateObject.day
     );
-    console.log(currDays)
-    console.log(currMonth)
-    console.log(currYear)
-    // Append to display
-    yearDisplay.textContent = currYear;
-    monthDisplay.textContent = currMonth;
-    daysDisplay.textContent = currDays;
-    yearDisplay.classList.add('slide');
+    
+    yearDisplay.classList.remove('slide');
+    monthDisplay.classList.remove('slide2');
+    daysDisplay.classList.remove('slide3');
+
+    // Force the browser to register the removal
+    void yearDisplay.offsetWidth;
+    
     yearDisplay.classList.add('slide');
     monthDisplay.classList.add('slide2');
     daysDisplay.classList.add('slide3');
+    
+    yearDisplay.textContent = currYear;
+    monthDisplay.textContent = currMonth;
+    daysDisplay.textContent = currDays;
 }
 
 function showError(sibbling) {
@@ -149,6 +153,7 @@ function showError(sibbling) {
     label.style.color = 'hsl(0, 100%, 67%)';
     const errorMsg = sibbling.nextElementSibling
     errorMsg.classList.remove('hidden')
+    errorMsg.style.display = 'block'
     sibbling.classList.add('error')
 }
 
@@ -161,7 +166,6 @@ function clearError(sibbling) {
 }
 
 btn.addEventListener('click', () => {
-    
     if(validateTotalDate()){
         yearInput.value = '';
         monthInput.value = '';
